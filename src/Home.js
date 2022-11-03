@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import BlogList from "./Components/BlogList";
 
 const Home = () => {
@@ -16,12 +16,18 @@ const Home = () => {
         {'title':'I am vegeance', body:'I am the night' , author:'Batman', id:3},
     ]);
 
+    const [name,setName] = useState('mario');
+
     const handleDelete = (id) => {
         const newBlogs = blogs.filter((blog) => {
             return (blog.id !== id);
         });
         setBlogs(newBlogs);
     }
+
+    useEffect(() => {
+        console.log(Date());
+    }, [name]);
 // Changing the state value triggers react to re-render the state-component
 // We automatically get access to the event parameter
     return ( 
@@ -30,6 +36,8 @@ const Home = () => {
             <p> {name } is {age}</p>
     <button onClick={(e) => handleClickAgain('Zelda' , e )}>Click me again</button> */}
             <BlogList blogs={blogs} title="All Blogs" handleDelete = {handleDelete}/>
+            <button onClick={() => setName('luigi')}> Change name</button>
+            <p>{name}</p>
         </div>
      );
 }
