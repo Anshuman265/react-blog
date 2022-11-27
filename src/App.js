@@ -1,16 +1,27 @@
 import Navbar from './Navbar';
 import Home from './Home';
+import {BrowserRouter as Router, Route , Routes} from 'react-router-dom';
+import Create from './Components/Create';
+
 
 function App() {
   const title = 'Welcome to the new blog';
   const likes = 50;
   return (
-    <div className="App">
-      <Navbar/>
-      <div className='content'>
-        <Home/>
+    // Wrapping the entire app into Router component for better routing through out the application
+    <Router>
+      <div className="App">
+        <Navbar/>
+        <div className='content'>
+          <Routes>
+            <Route path="/" element={<Home/>}>
+            </Route>
+            <Route path="/create" element={<Create/>}>
+            </Route>
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
 
