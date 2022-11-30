@@ -1,5 +1,4 @@
 // command to run json-server = npx json-server --watch data/db.json --port 8000
-import { useState,useEffect } from "react";
 import BlogList from "./Components/BlogList";
 import useFetch from "./customHooks/useFetch";
 
