@@ -1,8 +1,19 @@
-import {useParams} from 'react-router-dom';
+import {useParams , useNavigate} from 'react-router-dom';
 import useFetch from '../customHooks/useFetch';
 const BlogDetails = () => {
     const {id} = useParams();
     const {data : blog ,error,isPending} = useFetch('http://localhost:8000/blogs/' + id);
+    const history = useNavigate();
+
+    const handleDelete = () => {
+        fetch('http://localhost:8000/blogs/' + blog.id , {
+            method: 'DELETE',
+        }).then(() => {
+            console.log('handleDelete has been triggered');
+            history('/');
+        })
+    }
+
     return ( 
         <div className="blog-details">
             {isPending && <div>Loading ... </div> }
@@ -14,6 +25,7 @@ const BlogDetails = () => {
                     <div>
                         {blog.body}
                     </div>
+                    <button onClick={handleDelete}> Delete </button>
                 </article>
             )}
         </div>
