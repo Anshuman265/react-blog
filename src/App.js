@@ -7,8 +7,8 @@ import BlogDetails from './Components/BlogDetails';
 
 
 function App() {
-  const title = 'Welcome to the new blog';
-  const likes = 50;
+  // const title = 'Welcome to the new blog';
+  // const likes = 50;
   return (
     // Wrapping the entire app into Router component for better routing through out the application
     <Router>
@@ -16,11 +16,11 @@ function App() {
         <Navbar/>
         <div className='content'>
           <Routes>
-            <Route path="/" element={<Home/>}>
+            <Route path="/react-blog/" element={<Home/>}>
             </Route>
-            <Route path="/create" element={<Create/>}>
+            <Route path="/react-blog/create" element={<Create/>}>
             </Route>
-            <Route path="/blogs/:id" element={<BlogDetails/>}>
+            <Route path="/react-blog/blogs/:id" element={<BlogDetails/>}>
             </Route>
             <Route path="*" element={<NotFound/>}>
             </Route>
